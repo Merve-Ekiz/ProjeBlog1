@@ -7,9 +7,10 @@
 <h1>EditCategory Sayfası</h1>
 <br />
 @using (Html.BeginForm("EditCategory", "Category", FormMethod.Post))
-{ 
+{
     @Html.Label("Kategori Adı")
-    @Html.TextBoxFor(x => x.CategoryName, new {@class="form-control"})
+    @Html.HiddenFor(x => x.CategoryId)
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
     <br />
     <button class="btn btn-success">Güncelle</button>
 }

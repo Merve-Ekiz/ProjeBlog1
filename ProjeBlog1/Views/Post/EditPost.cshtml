@@ -8,6 +8,8 @@
 <br />
 @using (Html.BeginForm("EditPost", "Post", FormMethod.Post))
 {
+    @Html.HiddenFor(x => x.PostId )
+
     @Html.Label("Yazı Başlık")
     @Html.TextBoxFor(x => x.PostCaption, new { @class = "form-control" })
     <br />
