@@ -1,0 +1,28 @@
+﻿@model EntityLayer.Concreate.Post
+
+@{
+    ViewData["Title"] = "PostAdded";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Yeni Post ekleme Sayfası</h1>
+<br />
+@using (Html.BeginForm("PostAdded", "Post", FormMethod.Post))
+{
+    @Html.Label("Yazı Başlık")
+    @Html.TextBoxFor(x => x.PostCaption, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazı Durumu")
+    @Html.TextBoxFor(x => x.PostStatus, new { @class = "form-control" })
+    <br />
+    @Html.Label("Oluştuma tarihi")
+    @Html.TextBoxFor(x => x.CreateDate, new { @class = "form-control" })
+    <br />
+    @Html.Label("Kategori")
+    @Html.TextBoxFor(x => x.CategoryId, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazı İçerik")
+    @Html.TextAreaFor(x => x.PostContent, 10, 3, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+}

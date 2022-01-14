@@ -1,0 +1,42 @@
+﻿@model IEnumerable<EntityLayer.Concreate.Post>
+
+@{
+    ViewData["Title"] = "ReadAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>ReadAll</h1>
+
+<section class="banner-bottom">
+    <!--/blog-->
+    <div class="container">
+        <div class="row">
+            <!--left-->
+            <div class="col-lg-8 left-blog-info-w3layouts-agileits text-left">
+                @foreach (var item in Model)
+                {
+
+
+                <div class="blog-grid-top">
+                    <div class="b-grid-top">
+                        <div class="blog_info_left_grid">
+                            <a href="single.html">
+                                <img src="@item.image" class="img-fluid" alt="">
+                            </a>
+                        </div>
+                        <div class="blog-info-middle">
+                            
+                        </div>
+                    </div>
+
+                    <h3>
+                        <a href="single.html">@item.PostCaption </a>
+                    </h3>
+                    <p>@item.PostContent</p>
+                    <a href="/Post/PostListe/" class="btn btn-primary read-m">Blok Listesi</a>
+                </div> 
+                }
+            </div>
+        </div>
+    </div>
+</section>

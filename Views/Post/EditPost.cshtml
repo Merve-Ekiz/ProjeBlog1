@@ -1,0 +1,27 @@
+﻿@model EntityLayer.Concreate.Post
+@{
+    ViewData["Title"] = "EditPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Yazı Düzenleme Sayfası</h1>
+<br />
+@using (Html.BeginForm("EditPost", "Post", FormMethod.Post))
+{
+    @Html.Label("Yazı Başlık")
+    @Html.TextBoxFor(x => x.PostCaption, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazı Durumu")
+    @Html.TextBoxFor(x => x.PostStatus, new { @class = "form-control" })
+    <br />
+    @Html.Label("Oluştuma tarihi")
+    @Html.TextBoxFor(x => x.CreateDate, new { @class = "form-control" })
+    <br />
+    @Html.Label("Kategori")
+    @Html.TextBoxFor(x => x.CategoryId, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazı İçerik")
+    @Html.TextAreaFor(x => x.PostContent, 10, 3, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Güncelle</button>
+}

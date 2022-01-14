@@ -1,0 +1,16 @@
+﻿@model EntityLayer.Concreate.Category
+@{
+    ViewData["Title"] = "CategoryEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Yeni Kategori Ekleyiniz</h1>
+<br />
+@using (Html.BeginForm("CategoryEkle", "Category", FormMethod.Post))
+{
+    @Html.Label("Kategori Adı")
+    @Html.TextBoxFor(x => x.CategoryName, new {@class="form-control"})
+    <br />
+    <button class="btn btn-info">Kaydet</button>
+    
+}

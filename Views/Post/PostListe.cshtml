@@ -1,0 +1,36 @@
+﻿@using EntityLayer.Concreate
+@model List<Post>
+@{
+    ViewData["Title"] = "PostListe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>PostListe</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>Post Id</th>
+        <th>Post Başlık</th>
+        <th>Post İçerik</th>
+        <th>Post Durum</th>
+        <th>Post Oluşturma Tarihi</th>
+        <th>Post Yayınlama Tarihi</th>
+        <th>Post Kategori id</th>
+        <th>Post Sil</th>
+        <th>Post Düzenle</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.PostId</td>
+            <td>@item.PostCaption</td>
+            <td>@item.PostContent</td>
+            <td>@item.PostStatus</td>
+            <td>@item.CreateDate</td>
+            <td>@item.PublishDate</td>
+            <td>@item.CategoryId</td>
+            <td><a href="/Post/DeletePost/@item.PostId" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Post/EditPost/@item.PostId" class="btn btn-warning">Güncelle</a></td>
+        </tr>
+    }
+</table>
+<a href="/Post/PostAdded" class="btn btn-info">Yeni Post Ekle</a>
