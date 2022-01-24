@@ -4,8 +4,9 @@
     ViewData["Title"] = "PostAdded";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Yeni Post ekleme Sayfası</h1>
+<div  style="background-color:cadetblue; border:2px solid black; text-align:center;">
+    <h3>Eklemek istediiniz yeni post bilgilerini giriniz..</h3>
+</div>
 <br />
 @using (Html.BeginForm("PostAdded", "Post", FormMethod.Post))
 {

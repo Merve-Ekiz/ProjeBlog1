@@ -3,14 +3,32 @@
     ViewData["Title"] = "CategoryEkle";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Yeni Kategori Ekleyiniz</h1>
+<script>
+    $(document).ready(function () {
+       
+        $("button").click(function () {
+            $("#kaybol").hide("slow", function () {
+                alert("Tebrikler sisteme yeni kategori eklenmiştir..");
+            });
+        });
+    });
+            
+    
+</script>
+<div style="border:2px solid white; background-color:lightblue; text-align:center;">
+    <h3>Eklemek istediğiniz yeni kategorinin adını yazınız..!</h3>
+</div>
 <br />
+
 @using (Html.BeginForm("CategoryEkle", "Category", FormMethod.Post))
 {
-    @Html.Label("Kategori Adı")
-    @Html.TextBoxFor(x => x.CategoryName, new {@class="form-control"})
-    <br />
-    <button class="btn btn-info">Kaydet</button>
-    
+    <div style="background-color:antiquewhite; height: 400px; width: 700px; align-content: center; padding: 5px 5px 5px 5px; border: 4px dotted darkslategrey; margin: 50px auto auto 200px; ">
+        <div style="color:brown;">
+            @Html.Label("Kategori Adı")
+        </div>
+        @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+        <br />
+        <div id="kaybol" style="height:100px;width:100px;margin:60px auto auto 10px;"></div>
+        <button id="kaydet" style="margin:30px auto auto 600px;" class="btn btn-info">Kaydet</button>
+    </div>
 }

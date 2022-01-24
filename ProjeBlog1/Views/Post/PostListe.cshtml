@@ -4,33 +4,57 @@
     ViewData["Title"] = "PostListe";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>PostListe</h1>
-<table class="table table-bordered">
-    <tr>
-        <th>Post Id</th>
-        <th>Post Başlık</th>
-        <th>Post İçerik</th>
-        <th>Post Durum</th>
-        <th>Post Oluşturma Tarihi</th>
-        <th>Post Yayınlama Tarihi</th>
-        <th>Post Kategori id</th>
-        <th>Post Sil</th>
-        <th>Post Düzenle</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@item.PostId</td>
-            <td>@item.PostCaption</td>
-            <td>@item.PostContent</td>
-            <td>@item.PostStatus</td>
-            <td>@item.CreateDate</td>
-            <td>@item.PublishDate</td>
-            <td>@item.CategoryId</td>
-            <td><a href="/Post/DeletePost/@item.PostId" class="btn btn-danger">Sil</a></td>
-            <td><a href="/Post/EditPost/@item.PostId" class="btn btn-warning">Güncelle</a></td>
-        </tr>
+<script>
+    $(document).ready(function () {
+        $("#flip").click(function () {
+            $("#panel").slideToggle("slow");
+        });
+    });
+</script>
+<style>
+    #panel, #flip {
+        padding: 5px;
+        text-align: center;
+        background-color: #e5eecc;
+        border: solid 1px #c3c3c3;
     }
-</table>
-<a href="/Post/PostAdded" class="btn btn-info">Yeni Post Ekle</a>
+
+    #panel {
+        padding: 50px;
+        display: none;
+    }
+</style>
+<div id="flip" style="background-color:cadetblue; border:2px solid black;">
+    <h3>..Sistemdeki Tüm Postlar..</h3>
+</div>
+<div id="panel" style="border:3px solid black;">
+    <table class="table table-bordered">
+        <tr>
+            <th>Post Id</th>
+            <th>Post Başlık</th>
+            <th>Post İçerik</th>
+            <th>Post Durum</th>
+            <th>Post Oluşturma Tarihi</th>
+            <th>Post Yayınlama Tarihi</th>
+            <th>Post Kategori id</th>
+            <th>Post Sil</th>
+            <th>Post Düzenle</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PostId</td>
+                <td>@item.PostCaption</td>
+                <td>@item.PostContent</td>
+                <td>@item.PostStatus</td>
+                <td>@item.CreateDate</td>
+                <td>@item.PublishDate</td>
+                <td>@item.CategoryId</td>
+                <td><a href="/Post/DeletePost/@item.PostId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Post/EditPost/@item.PostId" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+        }
+    </table>
+</div>
+<hr />
+    <a href="/Post/PostAdded" class="btn btn-info">Yeni Post Ekle</a>

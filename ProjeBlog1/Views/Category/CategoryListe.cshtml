@@ -4,26 +4,50 @@
     ViewData["Title"] = "CategoryListe";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Kategorilerin Listesi</h1>
-
-<table class="table table-bordered">
-    <tr>
-        <th>Kategori-Id</th>
-        <th>Kategori Adı</th>
-        <th>Kategori Sil</th>
-        <th>Kategori Düzenle</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-<tr>
-    <td>@item.CategoryId</td>
-    <td>@item.CategoryName</td>
-    <td><a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
-    <td><a href="/Category/EditCategory/@item.CategoryId" class="btn btn-warning">Güncelle</a></td>
-</tr>
+<script>
+    $(document).ready(function () {
+        $("#flip").click(function () {
+            $("#panel").slideToggle("slow");
+        });
+    });
+</script>
+<style>
+    #panel, #flip {
+        padding: 5px;
+        text-align: center;
+        background-color: #e5eecc;
+        border: solid 1px #c3c3c3;
     }
+    #panel {
+        padding: 50px;
+        display: none;
+    }
+</style>
+<div id="flip" style="background-color:cadetblue; border:2px solid black; text-align:center;">
+    <h3>..Sistemdeki Tüm Kategorilerimiz..</h3>
+</div>
 
-</table>
+<div id="panel" style="border:3px solid black;">
+    <table class="table table-bordered">
+        <tr>
+            <th>Kategori-Id</th>
+            <th>Kategori Adı</th>
+            <th>Kategori Sil</th>
+            <th>Kategori Düzenle</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CategoryId</td>
+                <td>@item.CategoryName</td>
+                <td><a href="/Category/DeleteCategory/@item.CategoryId" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Category/EditCategory/@item.CategoryId" class="btn btn-warning">Güncelle</a></td>
+            </tr>
+        }
+
+    </table>
+</div>
+<hr />
+
 <a href="/Category/CategoryEkle/" class="btn btn-info">Yeni Kategori Ekle</a>
 
